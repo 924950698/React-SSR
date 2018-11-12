@@ -2,32 +2,24 @@ import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 import Routes from '../Routes';
-import { createStore, applyMiddleware } from 'redux'; 
 import { Provider } from 'react-redux';
-import thunk from 'redux-thunk';
-
+import getStore from '../store';
 
 export const render =(req) => {
 
-  const reducer = (state={name: 'liu'}, action) => {
-    return state;
-  }
-
-  const store = createStore(reducer, applyMiddleware(thunk));
-
   const content = renderToString((
-    <Provider store={store}>
+    //每次用户访问页面，都会执行getStore()方法，都会创建一个store（即独立store）
+    <Provider store={getStore()}>    
       <StaticRouter location={req.path} context={{}}>
 			{Routes}
-		</StaticRouter>
+		  </StaticRouter>
     </Provider>
-		
 	));
 
 	return (
 		`<html>
 			<head>
-				<title>柳向东</title>
+				<title>React_SSR</title>
 			</head>
 			<body>
 				<div id="root">${content}</div>
