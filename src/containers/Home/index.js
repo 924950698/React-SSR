@@ -12,7 +12,7 @@ import { getLsit } from './store/actions';
 class Home extends React.Component {
 
   getListItem(list) {
-    console.log(list, '---list----')
+    // console.log(list, '---list----')
     return list.map((item) => <div key={item.id}>{item.title}</div>)
   }
 
@@ -27,8 +27,17 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getHomeList()
+    console.log(123)
+    if(!this.props.list.length) {
+       this.props.getHomeList()
+    }
   }
+}
+
+//因为componentWillDidMount在Serve端是不执行的，所以需要把获取到的异步数据传送给服务器端
+Home.loadData = (store) => {
+  //1.这函数负责在服务器端渲染之前，把这个路由需要的数据提前加载好
+  return store.dispatch(getLsit())
 }
 
 const mapStateToProps = state => ({
@@ -38,7 +47,6 @@ const mapStateToProps = state => ({
 
 const mapDispatcherToProps = dispatcher => ({
   getHomeList() {
-    console.log('test')
     dispatcher(getLsit())
   }
 })
