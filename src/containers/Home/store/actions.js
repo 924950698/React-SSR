@@ -6,9 +6,17 @@ const getListAction = (list) => ({
   list
 })
 
-export const getLsit = () => {
+export const getLsit = (server) => {
+  // http://47.95.113.63/ssr/api/news.json?secret=M5s2sPneDE
+  let url= ''
+  if (server) {
+    url = 'http://47.95.113.63/ssr/api/news.json?secret=PP87ANTIPIRATE'
+  }else {
+    url = '/api/news.json?secret=M5s2sPneDE'
+  }
+
   return (dispatch) => {
-    return axios.get('http://47.95.113.63/ssr/api/news.json?secret=M5s2sPneDE')//存在跨域
+    return axios.get(url)//存在跨域
     .then( res=> {
       // console.log(res, 'getList is  sucess!')
       const dataList = res.data.data;

@@ -29,7 +29,7 @@ class Home extends React.Component {
   componentDidMount() {
     console.log(123)
     if(!this.props.list.length) {
-       this.props.getHomeList()
+       this.props.getHomeList(false)
     }
   }
 }
@@ -37,7 +37,7 @@ class Home extends React.Component {
 //因为componentWillDidMount在Serve端是不执行的，所以需要把获取到的异步数据传送给服务器端
 Home.loadData = (store) => {
   //1.这函数负责在服务器端渲染之前，把这个路由需要的数据提前加载好
-  return store.dispatch(getLsit())
+  return store.dispatch(getLsit(true))
 }
 
 const mapStateToProps = state => ({
