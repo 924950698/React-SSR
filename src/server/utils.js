@@ -2,6 +2,7 @@ import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter, Route, matchPath } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import { renderRoutes } from 'react-router-config'; 
 
 // matchPath只能匹配单级路由，matchRoutes可以匹配多级路由 
 // console.log(matchedRoutes, '---当前路由项---')    //第二个空数组是在请求小图标
@@ -12,9 +13,7 @@ export const render =(req, routes, store) => {
       <Provider store={store}>    
         <StaticRouter location={req.path} context={{}}>
         <div>
-          {routes.map(route => (
-            <Route {...route} />
-          ))}
+          {renderRoutes(routes)}
         </div>
         </StaticRouter>
       </Provider>

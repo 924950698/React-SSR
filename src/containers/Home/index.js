@@ -2,7 +2,7 @@
   无状态组件
 */
 import React, { Component } from 'react';
-import Header from '../../components/header.js';
+// import Header from '../../components/header.js';
 import { connect } from 'react-redux';
 import { getLsit } from './store/actions';
 
@@ -18,7 +18,6 @@ class Home extends React.Component {
 
   render() {
     return <div>
-      <Header />
       {
         this.getListItem(this.props.list)
       }
@@ -27,7 +26,6 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
-    console.log(123)
     if(!this.props.list.length) {
        this.props.getHomeList(false)
     }
