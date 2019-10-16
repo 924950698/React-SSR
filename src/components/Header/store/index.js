@@ -1,3 +1,3 @@
-import { reducer } from './reducer.js';
+import reducer from './reducer';
 
 export { reducer };
