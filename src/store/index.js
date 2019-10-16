@@ -7,10 +7,12 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { combineReducers } from 'redux'; 
-import { reducer as reducerHome }  from '../containers/Home/store';
+import { reducer as homeReducer }  from '../containers/Home/store';
+import { reducer as headerReducer } from '../components/Header/store';
 
 const reducer = combineReducers({     
-  home: reducerHome,
+  home: homeReducer,
+  header: headerReducer
 })
 
 export const getStore = () => {

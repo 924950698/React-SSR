@@ -94,7 +94,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _header = __webpack_require__(/*! ./components/header.js */ \"./src/components/header.js\");\n\nvar _header2 = _interopRequireDefault(_header);\n\nvar _reactRouterConfig = __webpack_require__(/*! react-router-config */ \"react-router-config\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n//同构：一套服务器代码，在服务器端和客户端各执行一次\n//服务端渲染，客户端绑定\n\nvar App = function App(props) {\n  console.log(props.route);\n  return _react2.default.createElement(\n    'div',\n    null,\n    _react2.default.createElement(_header2.default, null),\n    (0, _reactRouterConfig.renderRoutes)(props.route.routes)\n  );\n};\n\nexports.default = App;\n\n//# sourceURL=webpack:///./src/App.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _Header = __webpack_require__(/*! ./components/Header/ */ \"./src/components/Header/index.js\");\n\nvar _Header2 = _interopRequireDefault(_Header);\n\nvar _reactRouterConfig = __webpack_require__(/*! react-router-config */ \"react-router-config\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n//同构：一套服务器代码，在服务器端和客户端各执行一次\n//服务端渲染，客户端绑定\n\nvar App = function App(props) {\n  return _react2.default.createElement(\n    'div',\n    null,\n    _react2.default.createElement(_Header2.default, null),\n    (0, _reactRouterConfig.renderRoutes)(props.route.routes)\n  );\n};\n\nexports.default = App;\n\n//# sourceURL=webpack:///./src/App.js?");
 
 /***/ }),
 
@@ -110,15 +110,51 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 
 /***/ }),
 
-/***/ "./src/components/header.js":
-/*!**********************************!*\
-  !*** ./src/components/header.js ***!
-  \**********************************/
+/***/ "./src/client/request.js":
+/*!*******************************!*\
+  !*** ./src/client/request.js ***!
+  \*******************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n\tvalue: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _reactRouterDom = __webpack_require__(/*! react-router-dom */ \"react-router-dom\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n//同构：一套服务器代码，在服务器端和客户端各执行一次\n//服务端渲染，客户端绑定\n\nvar Header = function Header() {\n\treturn _react2.default.createElement(\n\t\t'div',\n\t\tnull,\n\t\t_react2.default.createElement(\n\t\t\t_reactRouterDom.Link,\n\t\t\t{ to: '/' },\n\t\t\t'Home'\n\t\t),\n\t\t_react2.default.createElement('br', null),\n\t\t_react2.default.createElement(\n\t\t\t_reactRouterDom.Link,\n\t\t\t{ to: '/login' },\n\t\t\t'Login'\n\t\t)\n\t);\n};\n\nexports.default = Header;\n\n//# sourceURL=webpack:///./src/components/header.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\n\nvar _axios = __webpack_require__(/*! axios */ \"axios\");\n\nvar _axios2 = _interopRequireDefault(_axios);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar instance = _axios2.default.create({\n    baseURL: '/' //客户端默认前缀反斜杠\n});\n\nexports.default = instance;\n\n//# sourceURL=webpack:///./src/client/request.js?");
+
+/***/ }),
+
+/***/ "./src/components/Header/index.js":
+/*!****************************************!*\
+  !*** ./src/components/Header/index.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n\tvalue: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _reactRouterDom = __webpack_require__(/*! react-router-dom */ \"react-router-dom\");\n\nvar _reactRedux = __webpack_require__(/*! react-redux */ \"react-redux\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n//同构：一套服务器代码，在服务器端和客户端各执行一次\n//服务端渲染，客户端绑定\n\nvar Header = function Header(props) {\n\tconsole.log(props, '--props--');\n\treturn _react2.default.createElement(\n\t\t'div',\n\t\tnull,\n\t\t_react2.default.createElement(\n\t\t\t_reactRouterDom.Link,\n\t\t\t{ to: '/' },\n\t\t\t'\\u9996\\u9875'\n\t\t),\n\t\t_react2.default.createElement('br', null),\n\t\t_react2.default.createElement(\n\t\t\t_reactRouterDom.Link,\n\t\t\t{ to: '/login' },\n\t\t\t'\\u767B\\u9646'\n\t\t),\n\t\t_react2.default.createElement('br', null),\n\t\t_react2.default.createElement(\n\t\t\t_reactRouterDom.Link,\n\t\t\t{ to: '/' },\n\t\t\t'\\u7FFB\\u8BD1\\u5217\\u8868'\n\t\t),\n\t\t_react2.default.createElement('br', null),\n\t\t_react2.default.createElement(\n\t\t\t_reactRouterDom.Link,\n\t\t\t{ to: '/login' },\n\t\t\t'\\u9000\\u51FA'\n\t\t)\n\t);\n};\n\nvar mapState = function mapState(state) {\n\treturn {\n\t\tlogin: state.header.login\n\t};\n};\n\nexports.default = Header;\n\n//# sourceURL=webpack:///./src/components/Header/index.js?");
+
+/***/ }),
+
+/***/ "./src/components/Header/store/index.js":
+/*!**********************************************!*\
+  !*** ./src/components/Header/store/index.js ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.reducer = undefined;\n\nvar _reducer = __webpack_require__(/*! ./reducer.js */ \"./src/components/Header/store/reducer.js\");\n\nexports.reducer = _reducer.reducer;\n\n//# sourceURL=webpack:///./src/components/Header/store/index.js?");
+
+/***/ }),
+
+/***/ "./src/components/Header/store/reducer.js":
+/*!************************************************!*\
+  !*** ./src/components/Header/store/reducer.js ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\nvar defaultState = {\n    login: false\n};\n\nexports.default = function () {\n    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : defaultState;\n    var action = arguments[1];\n\n    switch (action.type) {\n        default:\n            return state;\n    }\n};\n\n//# sourceURL=webpack:///./src/components/Header/store/reducer.js?");
 
 /***/ }),
 
@@ -142,7 +178,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.getLsit = undefined;\n\nvar _axios = __webpack_require__(/*! axios */ \"axios\");\n\nvar _axios2 = _interopRequireDefault(_axios);\n\nvar _actionsType = __webpack_require__(/*! ./actionsType */ \"./src/containers/Home/store/actionsType.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar getListAction = function getListAction(list) {\n  return {\n    type: _actionsType.RES_DATA_LIST,\n    list: list\n  };\n};\n\nvar getLsit = exports.getLsit = function getLsit(server) {\n  // http://47.95.113.63/ssr/api/news.json?secret=M5s2sPneDE\n  var url = '';\n  if (server) {\n    url = 'http://47.95.113.63/ssr/api/news.json?secret=PP87ANTIPIRATE';\n  } else {\n    url = '/api/news.json?secret=M5s2sPneDE';\n  }\n\n  return function (dispatch) {\n    return _axios2.default.get(url) //存在跨域\n    .then(function (res) {\n      // console.log(res, 'getList is  sucess!')\n      var dataList = res.data.data;\n      dispatch(getListAction(dataList));\n    });\n  };\n};\n\n//# sourceURL=webpack:///./src/containers/Home/store/actions.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.getLsit = undefined;\n\nvar _axios = __webpack_require__(/*! axios */ \"axios\");\n\nvar _axios2 = _interopRequireDefault(_axios);\n\nvar _actionsType = __webpack_require__(/*! ./actionsType */ \"./src/containers/Home/store/actionsType.js\");\n\nvar _request = __webpack_require__(/*! ../../../client/request */ \"./src/client/request.js\");\n\nvar _request2 = _interopRequireDefault(_request);\n\nvar _request3 = __webpack_require__(/*! ../../../server/request */ \"./src/server/request.js\");\n\nvar _request4 = _interopRequireDefault(_request3);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar getListAction = function getListAction(list) {\n  return {\n    type: _actionsType.RES_DATA_LIST,\n    list: list\n  };\n};\n\nvar getLsit = exports.getLsit = function getLsit(server) {\n\n  var request = server ? _request4.default : _request2.default;\n\n  return function (dispatch) {\n    return request.get('/api/news.json?secret=PP87ANTIPIRATE') //存在跨域\n    .then(function (res) {\n      // console.log(res, 'getList is  sucess!')\n      var dataList = res.data.data;\n      dispatch(getListAction(dataList));\n    });\n  };\n};\n\n//# sourceURL=webpack:///./src/containers/Home/store/actions.js?");
 
 /***/ }),
 
@@ -206,6 +242,18 @@ eval("\n\nvar _express = __webpack_require__(/*! express */ \"express\");\n\nvar
 
 /***/ }),
 
+/***/ "./src/server/request.js":
+/*!*******************************!*\
+  !*** ./src/server/request.js ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\n\nvar _axios = __webpack_require__(/*! axios */ \"axios\");\n\nvar _axios2 = _interopRequireDefault(_axios);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar instance = _axios2.default.create({\n    baseURL: 'http://47.95.113.63/ssr'\n});\n\nexports.default = instance;\n\n//# sourceURL=webpack:///./src/server/request.js?");
+
+/***/ }),
+
 /***/ "./src/server/utils.js":
 /*!*****************************!*\
   !*** ./src/server/utils.js ***!
@@ -226,7 +274,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.getClientStore = exports.getStore = undefined;\n\nvar _redux = __webpack_require__(/*! redux */ \"redux\");\n\nvar _reduxThunk = __webpack_require__(/*! redux-thunk */ \"redux-thunk\");\n\nvar _reduxThunk2 = _interopRequireDefault(_reduxThunk);\n\nvar _store = __webpack_require__(/*! ../containers/Home/store */ \"./src/containers/Home/store/index.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n/*\n  1.把client端和server端可以复用的 -- 创建store的部分，拿出来封装成一个组件。\n  2.每个用户访问页面的时候，应该导出的每个用户自己的store(即导出一个创建store的方法)，而不应该是单例的store（即不应该是所有用户共用一个store）\n  3.combineReducers 把所有的reducer组合到一个大的reducer之中。\n  4.脱水和注水：把数据注入到window.context这里，这是注水；在客户端拿出来直接使用，这叫做数据的脱水\n*/\nvar reducer = (0, _redux.combineReducers)({\n  home: _store.reducer\n});\n\nvar getStore = exports.getStore = function getStore() {\n  return (0, _redux.createStore)(reducer, (0, _redux.applyMiddleware)(_reduxThunk2.default));\n};\n\nvar getClientStore = exports.getClientStore = function getClientStore() {\n  var defaultState = window.context.state;\n  return (0, _redux.createStore)(reducer, defaultState, (0, _redux.applyMiddleware)(_reduxThunk2.default));\n};\n\n//# sourceURL=webpack:///./src/store/index.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.getClientStore = exports.getStore = undefined;\n\nvar _redux = __webpack_require__(/*! redux */ \"redux\");\n\nvar _reduxThunk = __webpack_require__(/*! redux-thunk */ \"redux-thunk\");\n\nvar _reduxThunk2 = _interopRequireDefault(_reduxThunk);\n\nvar _store = __webpack_require__(/*! ../containers/Home/store */ \"./src/containers/Home/store/index.js\");\n\nvar _store2 = __webpack_require__(/*! ../components/Header/store */ \"./src/components/Header/store/index.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar reducer = (0, _redux.combineReducers)({\n  home: _store.reducer,\n  header: _store2.reducer\n}); /*\n      1.把client端和server端可以复用的 -- 创建store的部分，拿出来封装成一个组件。\n      2.每个用户访问页面的时候，应该导出的每个用户自己的store(即导出一个创建store的方法)，而不应该是单例的store（即不应该是所有用户共用一个store）\n      3.combineReducers 把所有的reducer组合到一个大的reducer之中。\n      4.脱水和注水：把数据注入到window.context这里，这是注水；在客户端拿出来直接使用，这叫做数据的脱水\n    */\nvar getStore = exports.getStore = function getStore() {\n  return (0, _redux.createStore)(reducer, (0, _redux.applyMiddleware)(_reduxThunk2.default));\n};\n\nvar getClientStore = exports.getClientStore = function getClientStore() {\n  var defaultState = window.context.state;\n  return (0, _redux.createStore)(reducer, defaultState, (0, _redux.applyMiddleware)(_reduxThunk2.default));\n};\n\n//# sourceURL=webpack:///./src/store/index.js?");
 
 /***/ }),
 
