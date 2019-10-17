@@ -73,7 +73,10 @@ js中的react代码接管页面操作（完毕）<br />
 在Header组件中新建一个store，在reducer中模拟接口返回状态，并将header的store注入到全局的store中。此时在Head的index文件中使用react-redux的mapState接收store返回的登陆状态。根据这个状态来动态显示导航栏。
 ![WechatIMG11.jpeg](https://i.loli.net/2019/10/17/3hysr9iNYLgmP8R.jpg)
 
+## 6-7 登陆接口打通
+在Header组件中写一个store，来请求isLogin接口。根据接口返回的数据来判断Head组件显示的导航栏。
 
+## 6-8 登陆状态切换
 
 
 

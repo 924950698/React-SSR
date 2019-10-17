@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 //服务端渲染，客户端绑定
 
 const Header = (props) => {
+  console.log(props, '--props---')
 	return (
 		<div>
 			<Link to='/'>首页</Link><br /> 

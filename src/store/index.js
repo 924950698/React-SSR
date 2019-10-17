@@ -12,8 +12,6 @@ import { reducer as headerReducer } from '../components/Header/store';
 import clientAxios from '../client/request';
 import serverAxios from '../server/request';
 
-console.log(headerReducer, homeReducer,'--headerReducer--')
-
 const reducer = combineReducers({
   home: homeReducer,
   header: headerReducer
