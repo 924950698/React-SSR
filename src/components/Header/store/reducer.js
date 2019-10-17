@@ -3,9 +3,8 @@ const defaultState = {
 }
 
 export default (state = defaultState, action) => {
-    console.log(state, action, '--action--')
-    switch(action.type) {
-        default:
-            return state;
-    }
+  switch(action.type) {
+    default:
+        return state;
+  }
 }
