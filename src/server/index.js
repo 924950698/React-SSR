@@ -17,7 +17,7 @@ app.use('/api', proxy('http://47.95.113.63', { //发现请求api路径，就代�
 
 app.get('*', function (req, res) {
 
- const store = getStore()	//此处store为空
+ const store = getStore(req)	//此处store为空
 
 
  //根据路由路径，给store添加数据

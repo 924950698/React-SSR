@@ -14,10 +14,9 @@ const App = (props) => {
     </div>
 	)
 }
-
  
 App.loadData = (store) => {
-  store.dispatch(actions.getUserLogin()); //获取用户当前登陆状态
+  return store.dispatch(actions.getUserLogin()); //获取用户当前登陆状态
 }
 
 export default App;

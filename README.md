@@ -83,6 +83,6 @@ js中的react代码接管页面操作（完毕）<br />
 ![WechatIMG12.jpeg](https://i.loli.net/2019/10/17/xtDRWQu1LCaZVmq.jpg)
 
 ## 6-9 解决登陆cookie传递问题
-
+上面问题主要原因就是在Node中间层做转发的时候，没有携带cookie，在server中的request.js文件中，导出一个函数，携带上cookie即可。
 
 
