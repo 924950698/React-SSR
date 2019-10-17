@@ -75,8 +75,14 @@ js中的react代码接管页面操作（完毕）<br />
 
 ## 6-7 登陆接口打通
 在Header组件中写一个store，来请求isLogin接口。根据接口返回的数据来判断Head组件显示的导航栏。
+将获取用户登陆状态的接口放在了App.js中，在页面访问跟路径的时候，App就应该去请求当前登陆状态了，而不是放在Heade中请求。
 
 ## 6-8 登陆状态切换
+开发登陆，登出功能。在action中做接口请求，在index中调用action的方法。
+问题：每次刷新页面的时候，登陆状态一直在改变。原因：
+![WechatIMG12.jpeg](https://i.loli.net/2019/10/17/xtDRWQu1LCaZVmq.jpg)
+
+## 6-9 解决登陆cookie传递问题
 
 
 
