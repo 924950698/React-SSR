@@ -8,7 +8,7 @@ const getTranslationAction = (list) => ({
 
 export const getTranslationList = () => {
   return (dispatch, getState, axiosInstance) => {
-    return axiosInstance.get('/api/translations.json?secret=PP87ANTIPIRATE')//存在跨域
+    return axiosInstance.get('/api/translations.json?')//存在跨域
       .then( res => {
         console.log(res.data.data, 'getTranslationList is  sucess!')
         return dispatch(getTranslationAction(res.data.data))

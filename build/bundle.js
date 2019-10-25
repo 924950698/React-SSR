@@ -118,7 +118,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\n\nvar _axios = __webpack_require__(/*! axios */ \"axios\");\n\nvar _axios2 = _interopRequireDefault(_axios);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar instance = _axios2.default.create({\n    baseURL: '/' //客户端默认前缀反斜杠\n});\n\nexports.default = instance;\n\n//# sourceURL=webpack:///./src/client/request.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\n\nvar _axios = __webpack_require__(/*! axios */ \"axios\");\n\nvar _axios2 = _interopRequireDefault(_axios);\n\nvar _config = __webpack_require__(/*! ../config.js */ \"./src/config.js\");\n\nvar _config2 = _interopRequireDefault(_config);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar instance = _axios2.default.create({\n    baseURL: '/', //客户端默认前缀反斜杠\n    params: { secret: _config2.default.secret }\n});\n\nexports.default = instance;\n\n//# sourceURL=webpack:///./src/client/request.js?");
 
 /***/ }),
 
@@ -142,7 +142,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.logout = exports.login = exports.getUserLogin = undefined;\n\nvar _actionTypes = __webpack_require__(/*! ./actionTypes */ \"./src/components/Header/store/actionTypes.js\");\n\nvar changeLogin = function changeLogin(value) {\n  return {\n    type: _actionTypes.USER_LOGIN,\n    value: value\n  };\n};\n\nvar getUserLogin = exports.getUserLogin = function getUserLogin() {\n  return function (dispatch, getState, axiosInstance) {\n    return axiosInstance.get('/api/isLogin.json?secret=PP87ANTIPIRATE') //存在跨域\n    .then(function (res) {\n      dispatch(changeLogin(res.data.data.login));\n    });\n  };\n};\n\nvar login = exports.login = function login() {\n  return function (dispatch, getState, axiosInstance) {\n    return axiosInstance.get('/api/login.json?secret=PP87ANTIPIRATE') //存在跨域\n    .then(function (res) {\n      // console.log(res, 'getList is  sucess!')\n      dispatch(changeLogin(true));\n    });\n  };\n};\n\nvar logout = exports.logout = function logout() {\n  return function (dispatch, getState, axiosInstance) {\n    return axiosInstance.get('/api/logout.json?secret=PP87ANTIPIRATE') //存在跨域\n    .then(function (res) {\n      console.log(res, 'getList is  sucess!');\n      dispatch(changeLogin(false));\n    });\n  };\n};\n\n//# sourceURL=webpack:///./src/components/Header/store/action.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.logout = exports.login = exports.getUserLogin = undefined;\n\nvar _actionTypes = __webpack_require__(/*! ./actionTypes */ \"./src/components/Header/store/actionTypes.js\");\n\nvar changeLogin = function changeLogin(value) {\n  return {\n    type: _actionTypes.USER_LOGIN,\n    value: value\n  };\n};\n\nvar getUserLogin = exports.getUserLogin = function getUserLogin() {\n  return function (dispatch, getState, axiosInstance) {\n    return axiosInstance.get('/api/isLogin.json?') //存在跨域\n    .then(function (res) {\n      dispatch(changeLogin(res.data.data.login));\n    });\n  };\n};\n\nvar login = exports.login = function login() {\n  return function (dispatch, getState, axiosInstance) {\n    return axiosInstance.get('/api/login.json?') //存在跨域\n    .then(function (res) {\n      // console.log(res, 'getList is  sucess!')\n      dispatch(changeLogin(true));\n    });\n  };\n};\n\nvar logout = exports.logout = function logout() {\n  return function (dispatch, getState, axiosInstance) {\n    return axiosInstance.get('/api/logout.json?') //存在跨域\n    .then(function (res) {\n      console.log(res, 'getList is  sucess!');\n      dispatch(changeLogin(false));\n    });\n  };\n};\n\n//# sourceURL=webpack:///./src/components/Header/store/action.js?");
 
 /***/ }),
 
@@ -182,6 +182,18 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 
 /***/ }),
 
+/***/ "./src/config.js":
+/*!***********************!*\
+  !*** ./src/config.js ***!
+  \***********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n   value: true\n});\nexports.default = {\n   secret: 'PP87ANTIPIRATE'\n};\n\n//# sourceURL=webpack:///./src/config.js?");
+
+/***/ }),
+
 /***/ "./src/containers/Home/index.js":
 /*!**************************************!*\
   !*** ./src/containers/Home/index.js ***!
@@ -202,7 +214,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.getHomeList = undefined;\n\nvar _actionsType = __webpack_require__(/*! ./actionsType */ \"./src/containers/Home/store/actionsType.js\");\n\nvar getListAction = function getListAction(list) {\n  return {\n    type: _actionsType.RES_DATA_LIST,\n    list: list\n  };\n};\n\nvar getHomeList = exports.getHomeList = function getHomeList() {\n  return function (dispatch, getState, axiosInstance) {\n    return axiosInstance.get('/api/news.json?secret=PP87ANTIPIRATE') //存在跨域\n    .then(function (res) {\n      // console.log(res, 'getList is  sucess!')\n      var dataList = res.data.data;\n      dispatch(getListAction(dataList));\n    });\n  };\n};\n\n//# sourceURL=webpack:///./src/containers/Home/store/actions.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.getHomeList = undefined;\n\nvar _actionsType = __webpack_require__(/*! ./actionsType */ \"./src/containers/Home/store/actionsType.js\");\n\nvar getListAction = function getListAction(list) {\n  return {\n    type: _actionsType.RES_DATA_LIST,\n    list: list\n  };\n};\n\nvar getHomeList = exports.getHomeList = function getHomeList() {\n  return function (dispatch, getState, axiosInstance) {\n    return axiosInstance.get('/api/news.json?') //存在跨域\n    .then(function (res) {\n      // console.log(res, 'getList is  sucess!')\n      var dataList = res.data.data;\n      dispatch(getListAction(dataList));\n    });\n  };\n};\n\n//# sourceURL=webpack:///./src/containers/Home/store/actions.js?");
 
 /***/ }),
 
@@ -262,7 +274,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.getTranslationList = undefined;\n\nvar _constants = __webpack_require__(/*! ./constants */ \"./src/containers/Translation/store/constants.js\");\n\nvar getTranslationAction = function getTranslationAction(list) {\n  return {\n    type: _constants.RES_DATA_TRANSLATION,\n    list: list\n  };\n};\n\nvar getTranslationList = exports.getTranslationList = function getTranslationList() {\n  return function (dispatch, getState, axiosInstance) {\n    return axiosInstance.get('/api/translations.json?secret=PP87ANTIPIRATE') //存在跨域\n    .then(function (res) {\n      console.log(res.data.data, 'getTranslationList is  sucess!');\n      return dispatch(getTranslationAction(res.data.data));\n    });\n  };\n};\n\n//# sourceURL=webpack:///./src/containers/Translation/store/actions.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.getTranslationList = undefined;\n\nvar _constants = __webpack_require__(/*! ./constants */ \"./src/containers/Translation/store/constants.js\");\n\nvar getTranslationAction = function getTranslationAction(list) {\n  return {\n    type: _constants.RES_DATA_TRANSLATION,\n    list: list\n  };\n};\n\nvar getTranslationList = exports.getTranslationList = function getTranslationList() {\n  return function (dispatch, getState, axiosInstance) {\n    return axiosInstance.get('/api/translations.json?') //存在跨域\n    .then(function (res) {\n      console.log(res.data.data, 'getTranslationList is  sucess!');\n      return dispatch(getTranslationAction(res.data.data));\n    });\n  };\n};\n\n//# sourceURL=webpack:///./src/containers/Translation/store/actions.js?");
 
 /***/ }),
 
@@ -322,7 +334,7 @@ eval("\n\nvar _express = __webpack_require__(/*! express */ \"express\");\n\nvar
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\n\nvar _axios = __webpack_require__(/*! axios */ \"axios\");\n\nvar _axios2 = _interopRequireDefault(_axios);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar createInstance = function createInstance(req) {\n    return _axios2.default.create({\n        baseURL: 'http://47.95.113.63/ssr',\n        headers: {\n            cookie: req.get('cookie') || ''\n        }\n    });\n};\n\nexports.default = createInstance;\n\n//# sourceURL=webpack:///./src/server/request.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\n\nvar _axios = __webpack_require__(/*! axios */ \"axios\");\n\nvar _axios2 = _interopRequireDefault(_axios);\n\nvar _config = __webpack_require__(/*! ../config.js */ \"./src/config.js\");\n\nvar _config2 = _interopRequireDefault(_config);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar createInstance = function createInstance(req) {\n    return _axios2.default.create({\n        baseURL: 'http://47.95.113.63/ssr',\n        headers: {\n            cookie: req.get('cookie') || ''\n        },\n        params: { secret: _config2.default.secret }\n    });\n};\n\nexports.default = createInstance;\n\n//# sourceURL=webpack:///./src/server/request.js?");
 
 /***/ }),
 
