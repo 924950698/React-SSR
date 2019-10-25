@@ -2,7 +2,7 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import App from './App';
 import Home from './containers/Home';
-import Login from './containers/Login';
+import Translation from './containers/Translation';
 
 //exact： 当用户访问根路径，呈现那个组件
 //定义一个路由条目
@@ -19,10 +19,11 @@ export default [{
       key: 'home',
     },
     {
-      path: '/login',
-      component: Login,
+      path: '/translation',
+      component: Translation,
       exact: true,
-      key: 'login'
+      loadData: Translation.loadData,
+      key: 'translation'
     }
   ]
 }]

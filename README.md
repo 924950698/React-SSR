@@ -84,5 +84,8 @@ js中的react代码接管页面操作（完毕）<br />
 
 ## 6-9 解决登陆cookie传递问题
 上面问题主要原因就是在Node中间层做转发的时候，没有携带cookie，在server中的request.js文件中，导出一个函数，携带上cookie即可。
+![WechatIMG13.png](https://i.loli.net/2019/10/18/3bKBnufelgoFjGS.png)
+
+## 6-10 翻译列表页面制作
 
 
