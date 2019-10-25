@@ -87,5 +87,9 @@ js中的react代码接管页面操作（完毕）<br />
 ![WechatIMG13.png](https://i.loli.net/2019/10/18/3bKBnufelgoFjGS.png)
 
 ## 6-10 翻译列表页面制作
+回顾如何在ssr中开发一个页面？
+1. 先在router。js中添加路由
+2. 在创建一个页面级别的组件，创建一个index.js，调用store中的内容，回顾react-redux的流程。
+3. 接口数据可以渲染到页面上以后，结合业务逻辑做一下权限判断。
 
 
