@@ -103,5 +103,6 @@ js中的react代码接管页面操作（完毕）<br />
 未登录的情况下，当在浏览器中的地址后输入traslation路径时，页面上显示的还是未登录页面，但是查看网页源代码还是会跳转到translation页面。这是因为服务器端没有做重定向。那应该怎么解决呢？
 解决：在服务器端遇到上述的情况时，staticRouter结合renderRouters时发现redirect会在context中添加一段代码。可以利用这段代码中的action值来进行301重定向的判断。
 
-## 7-4
+## 7-4 数据请求失败的情况下，promise的处理
+服务端渲染，在请求首页的时候，会请求多个接口。因为用到的promise.all()方法，当一个接口报错时，整个all方法都不会执行then方法。页面都会不显示。此时，在给promise.all()传值的参数中座一层promise判断，使其无论时then还是catch都会返回结果，这样就一定会执行promise.all方法了。
 

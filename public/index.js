@@ -1704,7 +1704,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.getHomeList = undefined;\n\nvar _actionsType = __webpack_require__(/*! ./actionsType */ \"./src/containers/Home/store/actionsType.js\");\n\nvar getListAction = function getListAction(list) {\n  return {\n    type: _actionsType.RES_DATA_LIST,\n    list: list\n  };\n};\n\nvar getHomeList = exports.getHomeList = function getHomeList() {\n  return function (dispatch, getState, axiosInstance) {\n    return axiosInstance.get('/api/news.json?') //存在跨域\n    .then(function (res) {\n      // console.log(res, 'getList is  sucess!')\n      var dataList = res.data.data;\n      dispatch(getListAction(dataList));\n    });\n  };\n};\n\n//# sourceURL=webpack:///./src/containers/Home/store/actions.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.getHomeList = undefined;\n\nvar _actionsType = __webpack_require__(/*! ./actionsType */ \"./src/containers/Home/store/actionsType.js\");\n\nvar getListAction = function getListAction(list) {\n  return {\n    type: _actionsType.RES_DATA_LIST,\n    list: list\n  };\n};\n\nvar getHomeList = exports.getHomeList = function getHomeList() {\n  return function (dispatch, getState, axiosInstance) {\n    return axiosInstance.get('/api/new12s.json?') //存在跨域\n    .then(function (res) {\n      // console.log(res, 'getList is  sucess!')\n      var dataList = res.data.data;\n      dispatch(getListAction(dataList));\n    });\n  };\n};\n\n//# sourceURL=webpack:///./src/containers/Home/store/actions.js?");
 
 /***/ }),
 
