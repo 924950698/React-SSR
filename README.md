@@ -103,5 +103,5 @@ js中的react代码接管页面操作（完毕）<br />
 未登录的情况下，当在浏览器中的地址后输入traslation路径时，页面上显示的还是未登录页面，但是查看网页源代码还是会跳转到translation页面。这是因为服务器端没有做重定向。那应该怎么解决呢？
 解决：在服务器端遇到上述的情况时，staticRouter结合renderRouters时发现redirect会在context中添加一段代码。可以利用这段代码中的action值来进行301重定向的判断。
 
-
+## 7-4
 
