@@ -106,3 +106,8 @@ js中的react代码接管页面操作（完毕）<br />
 ## 7-4 数据请求失败的情况下，promise的处理
 服务端渲染，在请求首页的时候，会请求多个接口。因为用到的promise.all()方法，当一个接口报错时，整个all方法都不会执行then方法。页面都会不显示。此时，在给promise.all()传值的参数中座一层promise判断，使其无论时then还是catch都会返回结果，这样就一定会执行promise.all方法了。
 
+## 8-1 如何支持css样式修饰
+在浏览器端和服务端分别使用不同的loader来进行样式处理，在服务端使用isomorphic-style-loader处理css样式。
+
+## 8-2 如何实现css样式的服务器端渲染
+

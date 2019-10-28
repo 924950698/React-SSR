@@ -2,9 +2,9 @@
   无状态组件
 */
 import React, { Component } from 'react';
-// import Header from '../../components/header.js';
 import { connect } from 'react-redux';
 import { getHomeList } from './store/actions';
+import styles from './style.css';
 
 //同构：一套服务器代码，在服务器端和客户端各执行一次
 //服务端渲染，客户端绑定
@@ -16,7 +16,7 @@ class Home extends React.Component {
   }
 
   render() {
-    return <div>
+    return <div className={styles.test}>
       {
         this.getListItem(this.props.list)
       }
