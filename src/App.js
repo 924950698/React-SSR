@@ -7,9 +7,10 @@ import { actions } from './components/Header/store/';
 //服务端渲染，客户端绑定
 
 const App = (props) => {
+  
 	return (
 		<div>
-      <Header/>
+      <Header staticContext = {props.staticContext} />
       {renderRoutes(props.route.routes)}
     </div>
 	)

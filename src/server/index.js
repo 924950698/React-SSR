@@ -35,7 +35,7 @@ app.get('*', function (req, res) {
  })
 
  Promise.all(promises).then(()=> {
-    const context = {};
+    const context = {css: []};
     const html = render(req, routes, store, context) //此处store已获取到数据
     if(context.action ==='REPLACE') {
       res.redirect(301, context.url)
