@@ -11,6 +11,12 @@ import styles from './style.css';
 
 class Home extends React.Component {
 
+  componentWillMount() {
+    if (this.props.staticContext) {
+      this.props.staticContext.css = styles._getCss()
+    }
+  }
+
   getListItem(list) {
     return list.map((item) => <div key={item.id}>{item.title}</div>)
   }

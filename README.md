@@ -110,4 +110,6 @@ js中的react代码接管页面操作（完毕）<br />
 在浏览器端和服务端分别使用不同的loader来进行样式处理，在服务端使用isomorphic-style-loader处理css样式。
 
 ## 8-2 如何实现css样式的服务器端渲染
-
+在network中勾选disable cache时，刷新页面会明显抖动，原因是服务端没有进行css样式加载。
+解决：在服务端渲染时，用componentWillMount中判断当前的执行环境是不是服务器端，是的话，就把当前的css样式注入到context中。
+在untils中可以通过context拿到注入的样式，然后进行加载。

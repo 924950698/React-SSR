@@ -19,10 +19,13 @@ export const render =(req, routes, store, context) => {
     </Provider>
   ));
 
+  const cssSsr = context.css ? context.css : ''
+
   return (
     `<html>
       <head>
         <title>React_SSR</title>
+        <style>${cssSsr}</style>
       </head>
       <body>
         <div id="root">${content}</div>
