@@ -11,17 +11,10 @@ class Translation extends React.Component {
 
   render() {
     const { list, login } = this.props;
-    console.log(list, login,'--list---')
     return login ? <div>
       {this.getListItem(list)}
     </div> : <Redirect to='/' />
   }
-
-  // componentDidMount() {
-  //   if(!this.props.list.length) {
-  //      this.props.getTranslationList()
-  //   }
-  // }
 }
 
 Translation.loadData = (store) => {

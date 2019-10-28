@@ -7,7 +7,6 @@ const translationState = {
 export default (state = translationState, action) => {
   switch( action.type) {
     case RES_DATA_TRANSLATION:
-      console.log(action, '--action11--')
       return {
         ...state,
         translationList: action.list

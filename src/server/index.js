@@ -32,7 +32,15 @@ app.get('*', function (req, res) {
  })
 
  Promise.all(promises).then(()=> {
-    res.send(render(req, routes, store)) //此处store已获取到数据
+    const context = {};
+    const html = render(req, routes, store, context) //此处store已获取到数据
+    if (context.NOT_FOUNT) {
+      res.status(404)  //express提供的可以改变状态码的方法
+      res.send(html)
+    } else{
+      res.send(html)
+    }
+    
  })
 	
 })

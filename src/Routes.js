@@ -1,8 +1,7 @@
-import React from 'react';
-import { Route } from 'react-router-dom';
 import App from './App';
 import Home from './containers/Home';
 import Translation from './containers/Translation';
+import NotFound from './containers/NotFound';
 
 //exact： 当用户访问根路径，呈现那个组件
 //定义一个路由条目
@@ -24,6 +23,10 @@ export default [{
       exact: true,
       loadData: Translation.loadData,
       key: 'translation'
+    },
+    {
+      component: NotFound,
+      
     }
   ]
 }]

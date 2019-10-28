@@ -7,8 +7,7 @@ const defaultState = {
 export default (state = defaultState, action) => {
   switch( action.type) {
     case RES_DATA_LIST:
-      // console.log(action.list, '--action--')
-      return {
+    return {
         ...state,
         newList: action.list
       }
