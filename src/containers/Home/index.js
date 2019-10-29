@@ -37,12 +37,6 @@ class Home extends React.Component {
   }
 }
 
-//因为componentWillDidMount在Serve端是不执行的，所以需要把获取到的异步数据传送给服务器端
-Home.loadData = (store) => {
-  //这函数负责在服务器端渲染之前，把这个路由需要的数据提前加载好
-  return store.dispatch(getHomeList())
-}
-
 const mapStateToProps = state => ({
   name: state.home.name,
   list: state.home.newList
@@ -54,4 +48,12 @@ const mapDispatcherToProps = dispatcher => ({
   }
 })
 
-export default connect(mapStateToProps, mapDispatcherToProps)(Home);
+const exportHome = connect(mapStateToProps, mapDispatcherToProps)(Home)
+
+//因为componentWillDidMount在Serve端是不执行的，所以需要把获取到的异步数据传送给服务器端
+exportHome.loadData = (store) => {
+  //这函数负责在服务器端渲染之前，把这个路由需要的数据提前加载好
+  return store.dispatch(getHomeList())
+}
+
+export default exportHome;

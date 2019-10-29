@@ -17,10 +17,6 @@ class Translation extends React.Component {
   }
 }
 
-Translation.loadData = (store) => {
-  return store.dispatch(getTranslationList())
-}
-
 const mapStateToProps = state => ({
   list: state.translation.translationList, //translation:全局store中； translationList：当前store中reducer中的
   login: state.header.login,
@@ -32,4 +28,10 @@ const mapDispatcherToProps = dispatcher => ({
   }
 })
 
-export default connect(mapStateToProps, mapDispatcherToProps)(Translation);
+const exportTranslation = connect(mapStateToProps, mapDispatcherToProps)(Translation)
+
+exportTranslation.loadData = (store) => {
+  return store.dispatch(getTranslationList())
+}
+
+export default exportTranslation;
