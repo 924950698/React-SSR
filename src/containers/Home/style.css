@@ -1,7 +1,8 @@
-body {
-    background: green;
+.container {
+    margin: 20px;
 }
-.test {
-    background: red;
-    margin-top: 20px;
+.item {
+    line-height: 44px;
+    font-size: 16px;
+    color: #666;
 }

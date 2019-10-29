@@ -13,15 +13,14 @@ import withStyle from '../../withStyle';
 class Home extends React.Component {
 
   getListItem(list) {
-    return list.map((item) => <div key={item.id}>{item.title}</div>)
+    return list.map((item) => <div key={item.id} className={styles.item}>{item.title}</div>)
   }
 
   render() {
-    return <div className={styles.test}>
+    return <div className={styles.container}>
       {
         this.getListItem(this.props.list)
       }
-      <button onClick={() =>{alert('click')} }>click</button>	
     </div>
   }
 

@@ -8,15 +8,21 @@ import withStyle  from '../../withStyle';
 class Translation extends React.Component {
  
   getListItem(list) {
-    return list.map((item) => <div key={item.id}>{item.title}</div>)
+    return list.map((item) => <div key={item.id} className={styles.item}>{item.title}</div>)
   }
 
   render() {
     const { list, login } = this.props;
-    return login ? <div className={styles.test}>
+    return login ? <div className={styles.container}>
       {this.getListItem(list)}
     </div> : <Redirect to='/' />
   }
+
+  componentDidMount() {
+		if (!this.props.list.length) {
+			this.props.getTranslationList();
+		}
+	}
 }
 
 const mapStateToProps = state => ({
@@ -33,6 +39,7 @@ const mapDispatcherToProps = dispatcher => ({
 const exportTranslation = connect(mapStateToProps, mapDispatcherToProps)(withStyle(Translation, styles))
 
 exportTranslation.loadData = (store) => {
+  console.log('exportTranslation')
   return store.dispatch(getTranslationList())
 }
 

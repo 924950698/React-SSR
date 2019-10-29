@@ -1,7 +1,7 @@
 import { RES_DATA_TRANSLATION } from './constants';
 
 const translationState = {
-  translationList: [{id:1, title: 'reducer没有接收到接口数据'}],
+  translationList: [],
 }
 
 export default (state = translationState, action) => {
