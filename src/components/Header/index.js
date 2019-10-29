@@ -3,18 +3,13 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { actions } from './store/'
 import styles from './style.css';
+import withStyle from '../../withStyle';
 
 //同构：一套服务器代码，在服务器端和客户端各执行一次
 //服务端渲染，客户端绑定
 
 class Header extends Component {
 
-  componentWillMount() {
-    if (this.props.staticContext) {
-      this.props.staticContext.css.push(styles._getCss())
-    }
-  }
-  
   render () {
     const { login, handleLogin, handleLogout } = this.props
 
@@ -45,4 +40,6 @@ const mapDispatch = (dispatch) => ({
   }
 })
 
-export default connect(mapState, mapDispatch)(Header);
+
+
+export default connect(mapState, mapDispatch)(withStyle(Header, styles));

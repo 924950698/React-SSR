@@ -5,17 +5,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getHomeList } from './store/actions';
 import styles from './style.css';
+import withStyle from '../../withStyle';
 
 //同构：一套服务器代码，在服务器端和客户端各执行一次
 //服务端渲染，客户端绑定
 
 class Home extends React.Component {
-
-  componentWillMount() {
-    if (this.props.staticContext) {
-      this.props.staticContext.css.push(styles._getCss())
-    }
-  }
 
   getListItem(list) {
     return list.map((item) => <div key={item.id}>{item.title}</div>)
@@ -48,7 +43,7 @@ const mapDispatcherToProps = dispatcher => ({
   }
 })
 
-const exportHome = connect(mapStateToProps, mapDispatcherToProps)(Home)
+const exportHome = connect(mapStateToProps, mapDispatcherToProps)(withStyle(Home, styles))
 
 //因为componentWillDidMount在Serve端是不执行的，所以需要把获取到的异步数据传送给服务器端
 exportHome.loadData = (store) => {
