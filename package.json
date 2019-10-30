@@ -24,6 +24,7 @@
     "nodemon": "^1.19.4",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
+    "react-helmet": "^5.2.1",
     "react-redux": "^5.1.2",
     "react-router-config": "^4.4.0-beta.8",
     "react-router-dom": "^4.3.1",

@@ -1,8 +1,9 @@
 /*  
   无状态组件
 */
-import React, { Component } from 'react';
+import React, { Fragment, Component } from 'react';
 import { connect } from 'react-redux';
+import { Helmet } from 'react-helmet';
 import { getHomeList } from './store/actions';
 import styles from './style.css';
 import withStyle from '../../withStyle';
@@ -17,11 +18,19 @@ class Home extends React.Component {
   }
 
   render() {
-    return <div className={styles.container}>
-      {
-        this.getListItem(this.props.list)
-      }
-    </div>
+    return (
+      <Fragment>
+        <Helmet>
+          <title>这是柳向东的攒机网站 -- 丰富多彩的攒机资讯</title>
+          <meta name="description" content="这是柳向东的攒机网站 -- 丰富多彩的攒机资讯"/>
+        </Helmet>
+        <div className={styles.container}>
+          {
+            this.getListItem(this.props.list)
+          }
+        </div>
+      </Fragment>
+    )
   }
 
   componentDidMount() {

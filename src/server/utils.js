@@ -3,6 +3,7 @@ import { renderToString } from 'react-dom/server';
 import { StaticRouter, Route, matchPath } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { renderRoutes } from 'react-router-config'; 
+import { Helmet } from 'react-helmet';
 
 // matchPath只能匹配单级路由，matchRoutes可以匹配多级路由 
 // console.log(matchedRoutes, '---当前路由项---')    //第二个空数组是在请求小图标
@@ -19,12 +20,15 @@ export const render =(req, routes, store, context) => {
     </Provider>
   ));
 
+  const helmet = Helmet.renderStatic();
+   
   const cssSsr = context.css.length ? context.css.join('\n') : ''
 
   return (
     `<html>
       <head>
-        <title>React_SSR</title>
+        ${helmet.title.toString()}
+        ${helmet.meta.toString()}
         <style>${cssSsr}</style>
       </head>
       <body>
