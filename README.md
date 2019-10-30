@@ -149,5 +149,5 @@ seo是serch engine optimization 搜索引擎优化
 ## 9-5 课程总结
 
 
-## 使用预渲染解决seo优化
+## 9-6 使用预渲染解决seo优化
 使用prerender再启一台服务器进行预渲染。用ngix代理检测是用户访问，还是搜索引擎爬虫范围跟，如果是用户直接访问react服务器，如果是爬虫则访问prerender服务器。
